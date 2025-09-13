@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ALIN Logo Generator</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Playfair+Display:wght@700&family=Roboto+Condensed:wght@700&family=Oswald:wght@700&display=swap');
+        
+        body {
+            background: #333;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+            color: white;
+        }
+        
+        .preview {
+            background: #3AAFA9;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        canvas {
+            border: 1px solid #666;
+            margin: 10px;
+        }
+        
+        .download-section {
+            margin: 20px 0;
+        }
+        
+        button {
+            background: #3AAFA9;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #2E8B8B;
+        }
+    </style>
+</head>
+<body>
+    <h1>ALIN Logo Generator</h1>
+    <p>Logos en blanco con fondo transparente - Listo para descargar</p>
+    
+    <div class="preview">
+        <h3>Vista previa en banner verde aqua:</h3>
+        <div style="color: white; font-size: 36px; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 2px;">ALIN</div>
+    </div>
+    
+    <div class="download-section">
+        <h3>Descargar logos (PNG con fondo transparente):</h3>
+        
+        <canvas id="canvas1" width="200" height="60"></canvas>
+        <button onclick="downloadLogo('canvas1', 'alin-logo-sans-serif-bold.png')">Descargar Sans-Serif Bold</button>
+        <br>
+        
+        <canvas id="canvas2" width="200" height="60"></canvas>
+        <button onclick="downloadLogo('canvas2', 'alin-logo-serif-elegante.png')">Descargar Serif Elegante</button>
+        <br>
+        
+        <canvas id="canvas3" width="180" height="60"></canvas>
+        <button onclick="downloadLogo('canvas3', 'alin-logo-condensed.png')">Descargar Condensed</button>
+        <br>
+        
+        <canvas id="canvas4" width="220" height="60"></canvas>
+        <button onclick="downloadLogo('canvas4', 'alin-logo-display.png')">Descargar Display</button>
+    </div>
+
+    <script>
+        function createLogo(canvasId, fontFamily, fontSize, letterSpacing, width) {
+            const canvas = document.getElementById(canvasId);
+            const ctx = canvas.getContext('2d');
+            
+            // Limpiar canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Configurar texto
+            ctx.font = `700 ${fontSize}px ${fontFamily}`;
+            ctx.fillStyle = '#FFFFFF';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            // Aplicar letter-spacing manualmente
+            const text = 'ALIN';
+            const totalWidth = ctx.measureText(text).width + (letterSpacing * (text.length - 1));
+            let x = (canvas.width - totalWidth) / 2;
+            
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const charWidth = ctx.measureText(char).width;
+                ctx.fillText(char, x + charWidth / 2, canvas.height / 2);
+                x += charWidth + letterSpacing;
+            }
+        }
+        
+        function downloadLogo(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // Crear todos los logos cuando la página carga
+        window.onload = function() {
+            createLogo('canvas1', 'Montserrat', 36, 2, 200);
+            createLogo('canvas2', 'Playfair Display', 36, 1, 200);
+            createLogo('canvas3', 'Roboto Condensed', 38, 1, 180);
+            createLogo('canvas4', 'Oswald', 40, 3, 220);
+        };
+    </script>
+</body>
+</html>
