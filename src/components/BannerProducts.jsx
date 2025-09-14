@@ -34,7 +34,7 @@ const BannerProducts = ({
     getCategoryStyles
   } = useProductBanner();
 
-  const bannerStyles = getBannerStyles();
+  const bannerStyles = getBannerStyles(backgroundColor);
 
   return (
     <Box

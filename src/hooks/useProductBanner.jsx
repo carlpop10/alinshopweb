@@ -57,9 +57,9 @@ export const useProductBanner = () => {
   }, []);
 
   // Función para obtener estilos del banner
-  const getBannerStyles = useCallback(() => ({
+  const getBannerStyles = useCallback((backGroundColor) => ({
     container: {
-      backgroundColor: '#3AAFA9',
+      backgroundColor: '#989b9bff',
       width: '100%',
       height: {
         xs: '50px', // móvil
@@ -75,7 +75,7 @@ export const useProductBanner = () => {
       position: 'relative',
       cursor: 'default', // Evitar degradación del cursor
       '&:hover': {
-        backgroundColor: '#3AAFA9', // Mantener color sin degradar
+        backgroundColor: backGroundColor, // Mantener color sin degradar
       }
     },
     logoSection: {
@@ -98,7 +98,10 @@ export const useProductBanner = () => {
         sm: 2
       },
       flexWrap: 'nowrap',
-      overflow: 'auto'
+      overflow: 'auto',
+      px: 4, // padding horizontal (izquierda y derecha)
+      maxWidth: '100%', // evita que se salga del contenedor
+      boxSizing: 'border-box'
     }
   }), []);
 
@@ -145,8 +148,8 @@ export const useProductBanner = () => {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         maxWidth: {
-          xs: '60px',
-          sm: '80px'
+          xs: '100px',
+          sm: '180px'
         }
       }
     };

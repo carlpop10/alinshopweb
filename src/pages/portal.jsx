@@ -22,7 +22,7 @@ const Portal = () => {
                 {/* Banner de contacto */}
                 <Banner
                     title="Ventas y contacto: 554389897"
-                    color="#3AAFA9"
+                    color="#989b9bff"
                     colorTexto="#FFFFFF"
                 />
                 

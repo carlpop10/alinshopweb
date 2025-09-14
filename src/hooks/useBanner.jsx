@@ -41,14 +41,14 @@ export const useBanner = () => {
       color: colorTexto,
       width: '100%',
       height: {
-        xs: '33px', // móvil
-        sm: '30px'  // escritorio
+        xs: '30px', // móvil
+        sm: '15px'  // escritorio
       },
       padding: {
-        xs: '10px', // móvil
-        sm: '20px'  // escritorio
+        xs: '7px', // móvil
+        sm: '15px'  // escritorio
       },
-      marginBottom: '10px',
+      marginBottom: '0px',
       borderRadius: '0px',
       display: 'flex',
       alignItems: 'center',
@@ -67,7 +67,7 @@ export const useBanner = () => {
       gap: 1,
       fontSize: {
         xs: '14px', // móvil
-        sm: '16px'  // escritorio
+        sm: '15px'  // escritorio
       },
       fontWeight: 'medium'
     },
