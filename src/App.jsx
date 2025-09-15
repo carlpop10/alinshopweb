@@ -18,15 +18,16 @@ import MenuExample from './examples/MenuExample';
 import DrawerExample from './examples/DrawerExample';
 import FormControlExample from './examples/FormControlExample';
 import DataGridExample from './examples/DataGridExample';
-import SwiperExample from './examples/SwiperExample';
+import SwiperExample2 from './examples/SwiperExample2';
 import Portal from './pages/portal.jsx'
+;
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/portal" />} />
-        <Route path="/portal" element={<Portal />} />
+        <Route path="/" element={<Navigate to="/SwiperExample2" />} />
+        <Route path="/SwiperExample2" element={<SwiperExample2 />} />
       </Routes>
     </Router>
   );
