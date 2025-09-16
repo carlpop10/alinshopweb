@@ -10,16 +10,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 /**
- * Ejemplo de uso del componente Swiper para productos de papelería
+ * COPIA DE RESPALDO - SwiperExample3
  * 
- * ESTADO ACTUAL FUNCIONAL (para poder regresar si es necesario):
- * - Box laterales: 10% cada uno
- * - Box central: 80%
- * - Cards: maxWidth 220px
- * - spaceBetween: 15px
- * - slidesPerView: 'auto' en desktop, 4-5 en breakpoints
+ * CONFIGURACIÓN RESPALDADA:
+ * - Box laterales: 5% cada uno
+ * - Box central: 90%
+ * - Cards: maxWidth 200px
+ * - spaceBetween: 12px
+ * - slidesPerView: 'auto' en desktop, 5 en breakpoints 1024px+
+ * - Fuentes reducidas para mejor ajuste
  */
-const SwiperExample2 = () => {
+const SwiperExample3 = () => {
   // Datos de ejemplo de productos de papelería
   const productos = [
     {
@@ -69,7 +70,7 @@ const SwiperExample2 = () => {
   const ProductCard = ({ producto }) => (
     <Card sx={{ 
       width: '100%',
-      maxWidth: '100%',
+      maxWidth: 200,
       height: 320,
       display: 'flex', 
       flexDirection: 'column',
@@ -141,16 +142,19 @@ const SwiperExample2 = () => {
   );
 
   return (
-  <Box sx={{ 
-    width: '100%',
-    overflowX: 'hidden',
-    px: '5%',   // Simula márgenes laterales sin usar elementos vacíos
-    boxSizing: 'border-box'
+    <Box sx={{ 
+      width: '100%',
+      marginTop: '10px',
+      overflowX: 'hidden',
+      display: 'flex'
     }}>
-
+      
+      {/* Box izquierdo - 5% */}
+      <Box sx={{ width: '5%' }} />
+      
       {/* Box central - 90% con el slider */}
       <Box sx={{ 
-        width: '100%',
+        width: '90%',
         position: 'relative',
         overflow: 'hidden',
         '& .swiper': {
@@ -164,15 +168,40 @@ const SwiperExample2 = () => {
           display: 'flex',
           justifyContent: 'center'
         },
+        '& .swiper-button-next, & .swiper-button-prev': {
+          width: '40px',
+          height: '40px',
+          marginTop: '-20px',
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          borderRadius: '50%',
+          border: '1px solid #ddd',
+          color: '#333',
+          zIndex: 10,
+          '&:after': {
+            fontSize: '16px',
+            fontWeight: 'bold'
+          },
+          '&:hover': {
+            backgroundColor: 'rgba(255, 255, 255, 1)',
+            boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
+            border: '1px solid #1976d2'
+          }
+        },
+        '& .swiper-button-next': {
+          right: '-50px'
+        },
+        '& .swiper-button-prev': {
+          left: '-50px'
+        },
         '& .swiper-pagination': {
           bottom: '10px'
         }
       }}>
         <Swiper
           spaceBetween={12}
-          slidesPerView={4}
+          slidesPerView={'auto'}
           centeredSlides={false}
-          navigation={false}
+          navigation={true}
           autoplay={{ 
             delay: 4000, 
             disableOnInteraction: false,
@@ -182,7 +211,7 @@ const SwiperExample2 = () => {
             clickable: true,
             dynamicBullets: true 
           }}
-          modules={[Pagination, Autoplay]}
+          modules={[Navigation, Pagination, Autoplay]}
           breakpoints={{
             320: { 
               slidesPerView: 1,
@@ -197,10 +226,10 @@ const SwiperExample2 = () => {
               spaceBetween: 12
             },
             1024: { 
-              slidesPerView: 4,
+              slidesPerView: 5,
               spaceBetween: 12
             },
-            1300: { 
+            1200: { 
               slidesPerView: 5,
               spaceBetween: 12
             }
@@ -219,9 +248,11 @@ const SwiperExample2 = () => {
           ))}
         </Swiper>
       </Box>
-     
+      
+      {/* Box derecho - 5% */}
+      <Box sx={{ width: '5%' }} />
     </Box>
   );
 };
 
-export default SwiperExample2;
+export default SwiperExample3;
